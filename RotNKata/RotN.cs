@@ -20,10 +20,6 @@ namespace RotNKata
             return encryptedText;
         }
 
-        public string Decrypt(int rot, string text)
-        {
-            return Encrypt(-rot, text);
-        }
 
         public string EncryptSingleLetter(int rot, string text)
         {
