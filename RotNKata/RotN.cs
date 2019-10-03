@@ -7,19 +7,35 @@ namespace RotNKata
     {
         public string Encrypt(string plainText, int rotation)
         {
-            List<string> letters = new List<string>();
-            letters.Add("A");
-            letters.Add("B");
-            letters.Add("C");
-            letters.Add("D");
-            letters.Add("E");
-            letters.Add("F");
-            letters.Add("G");
-            letters.Add("H");
+            //char[] charPlaintText = plainText.ToCharArray();
 
-            int letterIndex = letters.IndexOf(plainText);
-            return letters[letterIndex - rotation];
+            //charPlaintText.
 
+            List<string> listOfLetters = letterDictionary();
+
+            int letterIndex = listOfLetters.IndexOf(plainText);
+            return listOfLetters[letterIndex - rotation];
+        }
+
+        private static List<string> letterDictionary()
+        {
+            List<string> listOfLetters = new List<string>();
+
+            for (char c = 'A'; c < 'Z'; c++)
+            {
+                listOfLetters.Add(c.ToString());
+            }
+
+        
+            //listOfLetters.Add("A");
+            //listOfLetters.Add("B");
+            //listOfLetters.Add("C");
+            //listOfLetters.Add("D");
+            //listOfLetters.Add("E");
+            //listOfLetters.Add("F");
+            //listOfLetters.Add("G");
+            //listOfLetters.Add("H");
+            return listOfLetters;
         }
     }
 }
