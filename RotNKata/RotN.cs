@@ -17,19 +17,9 @@ namespace RotNKata
             letters.Add("G");
             letters.Add("H");
 
-            
+            int letterIndex = letters.IndexOf(plainText);
+            return letters[letterIndex - rotation];
 
-            if (plainText == "F" && rotation == 3)
-            {
-                int letterIndex = letters.IndexOf(plainText);
-                return letters[letterIndex - 3];
-                //return "C";
-            }
-            else if(plainText == "H" && rotation == 2)
-            {
-                return "F";
-            }
-            return "A";
         }
     }
 }
