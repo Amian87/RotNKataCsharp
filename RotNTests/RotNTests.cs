@@ -38,5 +38,17 @@ namespace RotNTests
             Assert.AreEqual("E", rn.Encrypt("I", 4));
         }
 
+        [Test]
+        public void RotateLetterABy3()
+        {
+            Assert.AreEqual("X", rn.Encrypt("A", 3));
+        }
+
+        [Test]
+        public void RotateMultipleLettersBy5()
+        {
+            Assert.AreEqual("XB", rn.Encrypt("CG", 5));
+        }
+
     }
 }

@@ -7,35 +7,43 @@ namespace RotNKata
     {
         public string Encrypt(string plainText, int rotation)
         {
-            //char[] charPlaintText = plainText.ToCharArray();
+            List<string> alphabet = Alphabet();
+            int plainTextIndex = alphabet.IndexOf(plainText);
+            string encryptedText = "";
 
-            //charPlaintText.
+            char[] charPlainText = plainText.ToCharArray();
 
-            List<string> listOfLetters = letterDictionary();
 
-            int letterIndex = listOfLetters.IndexOf(plainText);
-            return listOfLetters[letterIndex - rotation];
-        }
-
-        private static List<string> letterDictionary()
-        {
-            List<string> listOfLetters = new List<string>();
-
-            for (char c = 'A'; c < 'Z'; c++)
+            foreach(char letter in charPlainText)
             {
-                listOfLetters.Add(c.ToString());
+                encryptedText = string.Concat(encryptedText, SingleLetterEncryption(rotation, plainTextIndex, alphabet));
             }
 
-        
-            //listOfLetters.Add("A");
-            //listOfLetters.Add("B");
-            //listOfLetters.Add("C");
-            //listOfLetters.Add("D");
-            //listOfLetters.Add("E");
-            //listOfLetters.Add("F");
-            //listOfLetters.Add("G");
-            //listOfLetters.Add("H");
-            return listOfLetters;
+            return encryptedText;
+        }
+
+        private static string SingleLetterEncryption(int rotation, int plainTextIndex, List<string> alphabet)
+        {
+            if (plainTextIndex - rotation < 0)
+            {
+                return alphabet[plainTextIndex - rotation + alphabet.Count];
+            }
+            else
+            {
+                return alphabet[plainTextIndex - rotation];
+            }
+        }
+
+        private static List<string> Alphabet()
+        {
+            List<string> letters = new List<string>();
+
+            for (char c = 'A'; c <= 'Z'; c++)
+            {
+                letters.Add(c.ToString());
+            }
+
+            return letters;
         }
     }
 }
