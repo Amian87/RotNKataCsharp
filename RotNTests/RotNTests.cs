@@ -54,5 +54,6 @@ namespace RotNTests
         {
             Assert.AreEqual("UY", rn.Encrypt(3, "XB"));
         }
+
     }
 }
