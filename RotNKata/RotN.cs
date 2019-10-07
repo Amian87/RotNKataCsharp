@@ -23,7 +23,7 @@ namespace RotNKata
             List<string> alphabets = listOfAlphabets();
             int alphabetIndex = alphabets.IndexOf(plainText);
 
-            if (alphabetIndex - 1 < 0)
+            if (alphabetIndex - rotation < 0)
             {
                 return alphabets[alphabetIndex - rotation + alphabets.Count];
             }
