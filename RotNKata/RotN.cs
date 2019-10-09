@@ -13,16 +13,12 @@ namespace RotNKata
             {
                plainText = string.Concat(plainText, DecryptSingleLetter(rotation, c.ToString())); 
             }
-
             return plainText;
-
-
-
         }
 
         private static string DecryptSingleLetter(int rotation, string cipherText)
         {
-            List<string> alphabets = listOfAlphabets();
+            List<string> alphabets = ListOfAlphabets();
             int alphabetIndex = alphabets.IndexOf(cipherText);
 
             if (alphabetIndex + rotation > alphabets.Count - 1)
@@ -39,16 +35,16 @@ namespace RotNKata
 
             foreach (char c in plainText)
             {
-                encryptedText = string.Concat(encryptedText, encryptSingleLetter(rotation, c.ToString())); 
+                encryptedText = string.Concat(encryptedText, EncryptSingleLetter(rotation, c.ToString())); 
             }
 
             return encryptedText;
 
         }
 
-        private static string encryptSingleLetter(int rotation, string plainText)
+        private static string EncryptSingleLetter(int rotation, string plainText)
         {
-            List<string> alphabets = listOfAlphabets();
+            List<string> alphabets = ListOfAlphabets();
             int alpahbetIndex = alphabets.IndexOf(plainText);
 
 
@@ -60,7 +56,7 @@ namespace RotNKata
             return alphabets[alpahbetIndex - rotation];
         }
 
-        private static List<string> listOfAlphabets()
+        private static List<string> ListOfAlphabets()
         {
             List<string> alphabets = new List<string>();
 
