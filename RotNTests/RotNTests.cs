@@ -1,6 +1,7 @@
 ﻿using NUnit.Framework;
 using RotNKata;
 using System;
+using System.Collections.Generic;
 
 namespace RotNTests
 {
@@ -11,7 +12,14 @@ namespace RotNTests
         [SetUp]
         public void SetUp()
         {
-           rn = new RotN();
+            List<string> capitalLetters = new List<string>();
+
+            for(char c = 'A'; c <= 'Z'; c++)
+            {
+                capitalLetters.Add(c.ToString());
+            }
+            
+            rn = new RotN(capitalLetters);
         }
 
         [Test]
@@ -87,24 +95,34 @@ namespace RotNTests
         }
 
         [Test]
-        public void ItAutomaticallyCapitalizesLettersOnEncryption()
-        {
-            Assert.AreEqual("A", rn.Encrypt(1, "b"));
-        }
-
-        [Test]
-        public void ItAutomaticallyCapitalizesLettersOnDecryption()
-        {
-            Assert.AreEqual("B", rn.Decrypt(1, "a"));
-        }
-
-        [Test]
         public void ItEncryptsAndThenDecryptsAMessage()
         {
             string message = "CAPITALIZEDSTRING";
             int key = 5;
 
             Assert.AreEqual(message, rn.Decrypt(key, rn.Encrypt(key, message)));
+        }
+
+        [Test]
+        public void ItEncryptsAndDecryptsANonTraditionalAlphabet()
+        {
+            List<string> customAlphabet = new List<string>();
+            customAlphabet.Add("Q");
+            customAlphabet.Add("w");
+            customAlphabet.Add("4");
+            customAlphabet.Add("~");
+            customAlphabet.Add("?");
+            customAlphabet.Add("V");
+
+            RotN customRn = new RotN(customAlphabet);
+            string message = "Q4~?V";
+            int key = 4;
+
+            string cipherText = customRn.Encrypt(key, message);
+            string decryptedText = customRn.Decrypt(key, cipherText);
+
+            Assert.AreEqual("4?VQw", cipherText);
+            Assert.AreEqual(message, decryptedText);
         }
 
     }

@@ -7,10 +7,7 @@ namespace RotNConsole
     {
         static void Main(string[] args)
         {
-            RotN rn = new RotN();
 
-            Console.WriteLine(rn.Encrypt(1, "A"));
-            Console.ReadLine();
         }
     }
 }

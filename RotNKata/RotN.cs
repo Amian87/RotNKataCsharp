@@ -6,17 +6,16 @@ namespace RotNKata
     {
         private readonly List<string> alphabet;
 
-        public RotN() 
+        public RotN(List<string> alphabetToEncrypt)
         {
-            alphabet = ListOfAlphabets();
+            alphabet = alphabetToEncrypt;
         }
 
         public string Encrypt(int rotation, string plainText)
         {
-            string normalizePlainText = plainText.ToUpper();
             string encryptedText = "";
 
-            foreach (char c in normalizePlainText)
+            foreach (char c in plainText)
             {
                 encryptedText = string.Concat(encryptedText, RotateSingleLetter(-rotation, c.ToString()));
             }
@@ -36,18 +35,7 @@ namespace RotNKata
             return alphabet[rotatedIndex];
         }
 
-        private List<string> ListOfAlphabets()
-        {
-            List<string> alphabets = new List<string>();
-
-            for(char c = 'A'; c <= 'Z'; c++)
-            {
-                alphabets.Add(c.ToString());
-            }
-            return alphabets;
-        }
-
-        int ModWithNegative(int num, int mod) {
+        private int ModWithNegative(int num, int mod) {
             return ((num % mod) + mod) % mod;
         }
     }
