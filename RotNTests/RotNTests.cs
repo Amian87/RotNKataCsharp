@@ -101,10 +101,11 @@ namespace RotNTests
         [Test]
         public void ItEncryptsAndThenDecryptsAMessage()
         {
-            string message = "CamelCaseString";
+            string message = "CAPITALIZEDSTRING";
             int key = 5;
 
             Assert.AreEqual(message, rn.Decrypt(key, rn.Encrypt(key, message)));
         }
+
     }
 }

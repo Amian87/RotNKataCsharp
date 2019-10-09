@@ -32,29 +32,8 @@ namespace RotNKata
         private string RotateSingleLetter(int rotation, string cipherText)
         {
             int alphabetIndex = alphabet.IndexOf(cipherText);
-
-            if (IndexTooLarge(alphabetIndex, rotation))
-            {
-                return alphabet[alphabetIndex + rotation - alphabet.Count];
-            }
-            else if (IndexTooSmall(alphabetIndex, rotation))
-            {
-                return alphabet[alphabetIndex + rotation + alphabet.Count];
-            }
-            else
-            {
-                return alphabet[alphabetIndex + rotation];
-            }
-        }
-
-        private bool IndexTooLarge(int alphabetIndex, int rotation) 
-        {
-            return alphabetIndex + rotation > alphabet.Count - 1;
-        }
-
-        private bool IndexTooSmall(int alphabetIndex, int rotation)
-        {
-            return alphabetIndex + rotation < 0;
+            int rotatedIndex = ModWithNegative(alphabetIndex + rotation, alphabet.Count);
+            return alphabet[rotatedIndex];
         }
 
         private List<string> ListOfAlphabets()
@@ -66,6 +45,10 @@ namespace RotNKata
                 alphabets.Add(c.ToString());
             }
             return alphabets;
+        }
+
+        int ModWithNegative(int num, int mod) {
+            return ((num % mod) + mod) % mod;
         }
     }
 }
