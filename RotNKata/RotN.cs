@@ -1,62 +1,63 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace RotNKata
 {
     public class RotN
     {
-        public string Decrypt(int rotation, string cipherText)
+        private readonly List<string> alphabet;
+
+        public RotN() 
         {
-            string plainText = "";
-
-            foreach (char c in cipherText)
-            {
-               plainText = string.Concat(plainText, DecryptSingleLetter(rotation, c.ToString())); 
-            }
-            return plainText;
-        }
-
-        private static string DecryptSingleLetter(int rotation, string cipherText)
-        {
-            List<string> alphabets = ListOfAlphabets();
-            int alphabetIndex = alphabets.IndexOf(cipherText);
-
-            if (alphabetIndex + rotation > alphabets.Count - 1)
-            {
-                return alphabets[alphabetIndex + rotation - alphabets.Count];
-            }
-
-            return alphabets[alphabetIndex + rotation];
+            alphabet = ListOfAlphabets();
         }
 
         public string Encrypt(int rotation, string plainText)
         {
+            string normalizePlainText = plainText.ToUpper();
             string encryptedText = "";
 
-            foreach (char c in plainText)
+            foreach (char c in normalizePlainText)
             {
-                encryptedText = string.Concat(encryptedText, EncryptSingleLetter(rotation, c.ToString())); 
+                encryptedText = string.Concat(encryptedText, RotateSingleLetter(-rotation, c.ToString()));
             }
 
             return encryptedText;
-
         }
 
-        private static string EncryptSingleLetter(int rotation, string plainText)
+        public string Decrypt(int rotation, string cipherText)
         {
-            List<string> alphabets = ListOfAlphabets();
-            int alpahbetIndex = alphabets.IndexOf(plainText);
-
-
-            if (alpahbetIndex - rotation < 0)
-            {
-                return alphabets[alpahbetIndex - rotation + alphabets.Count];
-            }
-
-            return alphabets[alpahbetIndex - rotation];
+            return Encrypt(-rotation, cipherText);
         }
 
-        private static List<string> ListOfAlphabets()
+        private string RotateSingleLetter(int rotation, string cipherText)
+        {
+            int alphabetIndex = alphabet.IndexOf(cipherText);
+
+            if (IndexTooLarge(alphabetIndex, rotation))
+            {
+                return alphabet[alphabetIndex + rotation - alphabet.Count];
+            }
+            else if (IndexTooSmall(alphabetIndex, rotation))
+            {
+                return alphabet[alphabetIndex + rotation + alphabet.Count];
+            }
+            else
+            {
+                return alphabet[alphabetIndex + rotation];
+            }
+        }
+
+        private bool IndexTooLarge(int alphabetIndex, int rotation) 
+        {
+            return alphabetIndex + rotation > alphabet.Count - 1;
+        }
+
+        private bool IndexTooSmall(int alphabetIndex, int rotation)
+        {
+            return alphabetIndex + rotation < 0;
+        }
+
+        private List<string> ListOfAlphabets()
         {
             List<string> alphabets = new List<string>();
 

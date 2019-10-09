@@ -85,5 +85,26 @@ namespace RotNTests
         {
             Assert.AreEqual("XB", rn.Decrypt(2, "VZ"));
         }
+
+        [Test]
+        public void ItAutomaticallyCapitalizesLettersOnEncryption()
+        {
+            Assert.AreEqual("A", rn.Encrypt(1, "b"));
+        }
+
+        [Test]
+        public void ItAutomaticallyCapitalizesLettersOnDecryption()
+        {
+            Assert.AreEqual("B", rn.Decrypt(1, "a"));
+        }
+
+        [Test]
+        public void ItEncryptsAndThenDecryptsAMessage()
+        {
+            string message = "CamelCaseString";
+            int key = 5;
+
+            Assert.AreEqual(message, rn.Decrypt(key, rn.Encrypt(key, message)));
+        }
     }
 }
