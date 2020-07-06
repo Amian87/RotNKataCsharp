@@ -5,6 +5,10 @@ VisualStudioVersion = 16.0.29306.81
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RotNKata", "RotNKata.csproj", "{AD3BE734-CA6C-4791-B688-ED2A21C9C855}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RotNKata.Test", "..\RotNKata.Test\RotNKata.Test.csproj", "{386481C5-A587-4A68-94B3-664BBC33B040}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RotNConsole", "..\RotNConsole\RotNConsole.csproj", "{489FBC61-205E-47E9-9E4E-480140C14164}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{AD3BE734-CA6C-4791-B688-ED2A21C9C855}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AD3BE734-CA6C-4791-B688-ED2A21C9C855}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AD3BE734-CA6C-4791-B688-ED2A21C9C855}.Release|Any CPU.Build.0 = Release|Any CPU
+		{386481C5-A587-4A68-94B3-664BBC33B040}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{386481C5-A587-4A68-94B3-664BBC33B040}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{386481C5-A587-4A68-94B3-664BBC33B040}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{386481C5-A587-4A68-94B3-664BBC33B040}.Release|Any CPU.Build.0 = Release|Any CPU
+		{489FBC61-205E-47E9-9E4E-480140C14164}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{489FBC61-205E-47E9-9E4E-480140C14164}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{489FBC61-205E-47E9-9E4E-480140C14164}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{489FBC61-205E-47E9-9E4E-480140C14164}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
